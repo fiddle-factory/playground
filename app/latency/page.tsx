@@ -599,7 +599,7 @@ export default function Home() {
                 <div
                   className="shape-1 p-1.25 origin-[25%_25%]"
                   style={{
-                    borderRadius: roundedCorners * 19,
+                    borderRadius: roundedCorners < 1 ? roundedCorners * 19 : 40,
                     backgroundColor:
                       boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                   }}
