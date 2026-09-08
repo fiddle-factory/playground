@@ -432,6 +432,7 @@ export default function Home() {
   const colorsRef = useRef(colors);
   const [textBloom, setTextBloom] = useState(0);
   const [selectedFont, setSelectedFont] = useState("geist");
+  const [roundedCorners, setRoundedCorners] = useState(1);
 
   const selectedFontClassName =
     FONT_OPTIONS.find((option) => option.id === selectedFont)?.className ??
@@ -552,8 +553,9 @@ export default function Home() {
           style={{ transform: `scale(${displayScale})` }}
         >
           <div
-            className="box w-26.5 h-26.5 flex items-center justify-center rounded-[40px] [corner-shape:superellipse(1.5)] overflow-hidden duration-200"
+            className="box w-26.5 h-26.5 flex items-center justify-center [corner-shape:superellipse(1.5)] overflow-hidden duration-200"
             style={{
+              borderRadius: roundedCorners * 40,
               backgroundColor: `color-mix(in srgb, var(--active) ${boxOpacity * 100}%, transparent)`,
             }}
           >
@@ -562,44 +564,50 @@ export default function Home() {
               className="state-parent relative w-20 h-20 grid grid-cols-2 grid-rows-2 gap-1"
             >
               <div
-                className="test absolute z-3 top-0 left-0 w-9.5 h-9.5 border-5 rounded-full"
+                className="test absolute z-3 top-0 left-0 w-9.5 h-9.5 border-5"
                 style={{
+                  borderRadius: roundedCorners * 19,
                   borderColor:
                     boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                 }}
               ></div>
               <div
-                className="test absolute z-3 top-0 right-0 w-9.5 h-9.5 border-5 rounded-full"
+                className="test absolute z-3 top-0 right-0 w-9.5 h-9.5 border-5"
                 style={{
+                  borderRadius: roundedCorners * 19,
                   borderColor:
                     boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                 }}
               ></div>
               <div
-                className="test absolute z-3 bottom-0 right-0 w-9.5 h-9.5 border-5 rounded-full"
+                className="test absolute z-3 bottom-0 right-0 w-9.5 h-9.5 border-5"
                 style={{
+                  borderRadius: roundedCorners * 19,
                   borderColor:
                     boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                 }}
               ></div>
               <div
-                className="test absolute z-3 bottom-0 left-0 w-9.5 h-9.5 border-5 rounded-full"
+                className="test absolute z-3 bottom-0 left-0 w-9.5 h-9.5 border-5"
                 style={{
+                  borderRadius: roundedCorners * 19,
                   borderColor:
                     boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                 }}
               ></div>
               <div className="relative z-2 w-9.5 h-9.5">
                 <div
-                  className="shape-1 p-1.25 origin-[25%_25%] rounded-[100px]"
+                  className="shape-1 p-1.25 origin-[25%_25%]"
                   style={{
+                    borderRadius: roundedCorners * 19,
                     backgroundColor:
                       boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                   }}
                 >
                   <div
-                    className="relative knob-1 rounded-[14px]"
+                    className="relative knob-1"
                     style={{
+                      borderRadius: roundedCorners * 14,
                       backgroundColor:
                         boxOpacity > 0.5
                           ? "var(--active)"
@@ -610,8 +618,9 @@ export default function Home() {
               </div>
               <div className="relative z-1 w-9.5 h-9.5">
                 <div
-                  className="shape-2 w-full h-full p-1.25 origin-[75%_25%] rounded-[100px]"
+                  className="shape-2 w-full h-full p-1.25 origin-[75%_25%]"
                   style={{
+                    borderRadius: roundedCorners * 19,
                     backgroundColor:
                       boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                   }}
@@ -621,8 +630,9 @@ export default function Home() {
               </div>
               <div className="relative z-1 w-9.5 h-9.5">
                 <div
-                  className="shape-3 w-full h-full p-1.25 origin-[25%_75%] rounded-[100px]"
+                  className="shape-3 w-full h-full p-1.25 origin-[25%_75%]"
                   style={{
+                    borderRadius: roundedCorners * 19,
                     backgroundColor:
                       boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                   }}
@@ -632,8 +642,9 @@ export default function Home() {
               </div>
               <div className="relative z-1 w-9.5 h-9.5">
                 <div
-                  className="shape-4 w-full h-full p-1.25 origin-[75%_75%] rounded-[100px]"
+                  className="shape-4 w-full h-full p-1.25 origin-[75%_75%]"
                   style={{
+                    borderRadius: roundedCorners * 19,
                     backgroundColor:
                       boxOpacity > 0.5 ? "var(--background)" : "var(--active)",
                   }}
@@ -680,7 +691,7 @@ export default function Home() {
             <div className="flex flex-col items-start gap-1">
               <label htmlFor="text">Text</label>
               <input
-                className="border border-white/25 rounded-lg px-2 py-1 text-white"
+                className="border border-white/25 rounded-[8px] px-2 py-1 text-white"
                 id="text"
                 type="text"
                 value={text}
@@ -690,7 +701,7 @@ export default function Home() {
             <div className="flex flex-col items-start gap-1">
               <label htmlFor="font">Font:</label>
               <select
-                className="bg-white/10 p-1.25 rounded-lg"
+                className="bg-white/10 p-1.25 rounded-[8px]"
                 name="font"
                 id="font"
                 value={selectedFont}
@@ -750,7 +761,7 @@ export default function Home() {
                 <div className="w-full mb-2 flex items-center gap-1">
                   {colors.map((color, index) => (
                     <div
-                      className="w-full h-6 flex items-center justify-center rounded-md overflow-hidden"
+                      className="w-full h-6 flex items-center justify-center rounded-[6px] overflow-hidden"
                       key={index}
                     >
                       <input
@@ -811,6 +822,21 @@ export default function Home() {
                 step="0.1"
                 value={speedFactor}
                 onChange={(e) => setSpeedFactor(parseFloat(e.target.value))}
+              />
+            </div>
+            <div className="flex flex-col items-stretch gap-1">
+              <div className="flex items-center justify-between">
+                <label htmlFor="roundedCorners">Rounded corners:</label>
+                <label>{roundedCorners}</label>
+              </div>
+              <input
+                id="roundedCorners"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={roundedCorners}
+                onChange={(e) => setRoundedCorners(parseFloat(e.target.value))}
               />
             </div>
           </div>
