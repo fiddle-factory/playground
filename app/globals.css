@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #0a1022;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --active: #ffffff;
 }
 
 body {
   background: var(--background);
-  color: var(--foreground);
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+  font-size: 0.8rem;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+.state-parent {
+  --parent-rotate: 0;
+  --shape-1-width: 38;
+  --shape-1-height: 38;
+  --shape-1-x: 0;
+  --shape-1-y: 0;
+  --shape-2-scale: 1;
+  --shape-4-scale: 1;
+  --shape-3-scale: 1;
+  --knob-1-width: 28;
+  --knob-1-height: 28;
+  --knob-1-x: 0;
+  --knob-1-y: 0;
+  --knob-1-rotate: 0;
+  --knob-3-opacity: 1;
+  --test-opacity: 0;
+  transform: rotate(calc(var(--parent-rotate) * 1deg));
+}
+
+.box,
+.test,
+.knob-1,
+.knob-2,
+.knob-3,
+.knob-4 {
+  will-change: background-color;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.shape-1 {
+  width: calc(var(--shape-1-width) * 1px);
+  height: calc(var(--shape-1-height) * 1px);
+  transform: translate(
+    calc(var(--shape-1-x) * 1px),
+    calc(var(--shape-1-y) * 1px)
+  );
+}
+
+.shape-2 {
+  transform: scale(var(--shape-2-scale));
+}
+
+.shape-4 {
+  transform: scale(var(--shape-4-scale));
+}
+
+.shape-3 {
+  transform: scale(var(--shape-3-scale));
+}
+
+.knob-1 {
+  width: calc(var(--knob-1-width) * 1px);
+  height: calc(var(--knob-1-height) * 1px);
+  transform: translate(calc(var(--knob-1-x) * 1px), calc(var(--knob-1-y) * 1px))
+    rotate(calc(var(--knob-1-rotate) * 1deg));
+}
+
+.knob-3 {
+  opacity: var(--knob-3-opacity);
+}
+
+.test {
+  opacity: var(--test-opacity);
+}
+
+input[type="text"],
+input[type="range"],
+select {
+  width: 100%;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Hides default styling in Chrome/Safari/Edge */
+  appearance: none;
+  accent-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.12);
+  height: 18px;
+  padding: 4px;
+  border-radius: 10px;
+}
+input[type="range"]:focus {
+  outline: none;
+}
+/* Chrome, Safari, Edge, and Opera */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Required to apply custom styles */
+  appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: white; /* Green handle */
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  border: none; /* Removes default border */
+  border-radius: 50%;
+  background: white;
+}
+/* Internet Explorer */
+input[type="range"]::-ms-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: white;
+}
+
+input[type="checkbox"] {
+  accent-color: #ffffff;
+  background-color: var(--background);
 }
