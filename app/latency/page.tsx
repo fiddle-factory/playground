@@ -827,7 +827,7 @@ export default function Home() {
             <div className="flex flex-col items-stretch gap-1">
               <div className="flex items-center justify-between">
                 <label htmlFor="roundedCorners">Rounded corners:</label>
-                <label>{roundedCorners}</label>
+                <label>{roundedCorners * 100}%</label>
               </div>
               <input
                 id="roundedCorners"
